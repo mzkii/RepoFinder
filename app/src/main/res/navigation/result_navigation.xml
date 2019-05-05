@@ -17,7 +17,7 @@
       android:name="com.mzkii.dev.fruitsbasket.result.DetailFragment"
       android:label="リポジトリ詳細">
     <argument
-        android:name="id"
-        app:argType="long"/>
+        android:name="repositoryUrl"
+        app:argType="string"/>
   </fragment>
 </navigation>

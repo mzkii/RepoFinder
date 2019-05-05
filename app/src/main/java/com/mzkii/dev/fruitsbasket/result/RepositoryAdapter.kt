@@ -11,7 +11,7 @@ import com.mzkii.dev.fruitsbasket.api.Repository
 import com.mzkii.dev.fruitsbasket.result.RepositoryAdapter.RecyclerViewHolder
 
 class RepositoryAdapter(
-  private val onItemClicked: (Long) -> Unit
+  private val onItemClicked: (String) -> Unit
 ) : RecyclerView.Adapter<RecyclerViewHolder>() {
 
   private val repositoryItem = mutableListOf<Repository>()
@@ -34,14 +34,14 @@ class RepositoryAdapter(
 
   override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
     val item = repositoryItem[position]
-    holder.repoId.text = item.id.toString()
-    holder.title.text = item.name
-    holder.parent.setOnClickListener { onItemClicked(item.id) }
+    holder.repoName.text = item.name
+    holder.repoUrl.text = item.html_url
+    holder.parent.setOnClickListener { onItemClicked(item.html_url) }
   }
 
   class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val title: TextView = view.findViewById(R.id.title)
-    val repoId: TextView = view.findViewById(R.id.repoId)
+    val repoName: TextView = view.findViewById(R.id.repoName)
+    val repoUrl: TextView = view.findViewById(R.id.repoUrl)
     val parent: ConstraintLayout = view.findViewById(R.id.parentComponent)
   }
 }

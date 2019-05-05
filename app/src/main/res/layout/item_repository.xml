@@ -11,23 +11,23 @@
     >
 
   <TextView
-      android:id="@+id/repoId"
+      android:id="@+id/repoName"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      tools:text="ここにリポジトリのIDが入ります"
+      tools:text="ここにリポジトリ名が入ります"
       />
 
   <TextView
-      android:id="@+id/title"
+      android:id="@+id/repoUrl"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="8dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/repoId"
-      tools:text="ここにリポジトリ名が入ります"
+      app:layout_constraintTop_toBottomOf="@+id/repoName"
+      tools:text="ここにリポジトリの URL が入ります"
       />
 </androidx.constraintlayout.widget.ConstraintLayout>
