@@ -13,7 +13,7 @@ import timber.log.Timber
 
 class ResultViewModel : ViewModel() {
 
-  // RxJava の購読をキャンセルするためのクラス．
+  // RxJava の購読をまとめてキャンセルするためのクラス．
   private val compositeDisposable = CompositeDisposable()
 
   // リポジトリのリストを保持する LiveData．
@@ -22,10 +22,10 @@ class ResultViewModel : ViewModel() {
   // リポジトリリスト読み込み状況を保持する LiveData．
   val isLoading = MutableLiveData<Boolean>()
 
-  // 何かエラーメッセージを保持する LiveData．
+  // エラーメッセージを保持する LiveData．
   val toast = MutableLiveData<String>()
 
-  // gitHubId さんのパブリックなリポジトリを取得する．
+  // gitHubId のパブリックなリポジトリを取得する．
   fun fetchRepositoryList(gitHubId: String) {
     APIClient
       .retrofit
@@ -35,7 +35,8 @@ class ResultViewModel : ViewModel() {
       // Schedulers.io() : 入出力用のスレッド．
       .subscribeOn(Schedulers.io())
 
-      // 結果を受け取るスレッドを指定する．MainThread(=UI Thread)
+      // 結果を受け取るスレッドを指定する．
+      // 結果を RecyclerView に反映させたいので MainThread(=UI Thread) を指定する．
       .observeOn(AndroidSchedulers.mainThread())
 
       // 読み込み開始時に isLoading を true にしてグルグルを出す．

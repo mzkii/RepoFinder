@@ -17,7 +17,7 @@ import com.mzkii.dev.fruitsbasket.R
 class ResultFragment : Fragment() {
 
   // recyclerView で使う Adapter を定義しておく．
-  // リストのアイテムがクリックされたら，そのリポジトリの ID が clickedItemUrl として渡ってくるので，
+  // リストのアイテムがクリックされたら，そのリポジトリの URL が clickedItemUrl として渡ってくるので，
   // それを使って DetailFragment に遷移させる．
   private val adapter = RepositoryAdapter { clickedItemUrl ->
 
@@ -46,11 +46,13 @@ class ResultFragment : Fragment() {
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
     // viewModel を取得する．
     val activity = requireActivity()
     viewModel = ViewModelProviders.of(activity).get(ResultViewModel::class.java)
 
-    // リポジトリのリストの内容を購読する．内容が変化したら勝手に中身が実行される．
+    // リポジトリのリストの内容を購読する．
+    // 内容が変化したら勝手に中身が実行される．
     viewModel.repositoryList.observe(this, Observer { repositoryList ->
       adapter.update(repositoryList)
     })

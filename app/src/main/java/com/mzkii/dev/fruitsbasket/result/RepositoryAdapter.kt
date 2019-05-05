@@ -22,7 +22,9 @@ class RepositoryAdapter(
     notifyDataSetChanged()
   }
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
+  override fun onCreateViewHolder(
+    parent: ViewGroup, viewType: Int)
+    : RecyclerViewHolder {
     val layoutInflater = LayoutInflater.from(parent.context)
     val view = layoutInflater.inflate(R.layout.item_repository, parent, false)
     return RecyclerViewHolder(view)
@@ -32,7 +34,9 @@ class RepositoryAdapter(
     return repositoryItem.size
   }
 
-  override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
+  override fun onBindViewHolder(
+    holder: RecyclerViewHolder, position: Int
+  ) {
     val item = repositoryItem[position]
     holder.repoName.text = item.name
     holder.repoUrl.text = item.html_url

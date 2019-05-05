@@ -13,7 +13,7 @@ import com.mzkii.dev.fruitsbasket.R
 // リポジトリの詳細画面．WebView で単に URL 先を表示させるだけ．
 class DetailFragment : Fragment() {
 
-  // Navigation を使って，遷移元の ResultFragment から渡ってきた URL を取得しておく．
+  // SafeArgs を使って，遷移元の ResultFragment から渡ってきた URL を取得しておく．
   // repositoryUrl が最初に参照されたタイミングで初期化される．
   private val repositoryUrl: String by lazy {
     DetailFragmentArgs.fromBundle(requireArguments()).repositoryUrl

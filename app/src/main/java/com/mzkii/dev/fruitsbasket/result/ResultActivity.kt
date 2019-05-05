@@ -68,7 +68,8 @@ class ResultActivity : AppCompatActivity() {
       progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     })
 
-    // エラーメッセージを購読する．何か文字が来たら Toast で表示しておく．
+    // エラーメッセージを購読する．
+    // 何か文字が来たら Toast で表示しておく．
     viewModel.toast.observe(this, Observer {
       Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
     })
