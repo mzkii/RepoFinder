@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.mzkii.dev.fruitsbasket.R
 
 // 検索結果を表示したり，リポジトリの詳細情報を表示する画面
+// ResultFragment と DetailFragment を保持している Activity
 class ResultActivity : AppCompatActivity() {
 
   // よくある activity を作るパターン
@@ -42,16 +43,17 @@ class ResultActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_result)
 
-    // navigation の設定諸々
+    // navigation の設定を諸々しておく．
     // 参考記事: https://qiita.com/jimmysharp/items/06f3157152fbc4cd5113
     val navController = findNavController(R.id.main_nav_host)
     val appBarConfiguration = AppBarConfiguration(navController.graph)
     setupActionBarWithNavController(navController, appBarConfiguration)
 
-    // viewModel を取得する
+    // viewModel を取得する．
     viewModel = ViewModelProviders.of(this).get(ResultViewModel::class.java)
 
-    // リポジトリを取得する
+    // リポジトリを取得する．
+    // 取得し終わったら，ResultFragment のリストが自動的に更新される．
     viewModel.fetchRepositoryList(id)
   }
 
