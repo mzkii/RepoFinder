@@ -39,7 +39,7 @@ class ResultActivity : AppCompatActivity() {
     intent.getStringExtra(EXTRA_GITHUB_ID)
   }
 
-  // viewModel を保持する変数
+  // viewModel を保持する変数．
   private lateinit var viewModel: ResultViewModel
 
   override fun onCreate(savedInstanceState: Bundle?) {

@@ -8,6 +8,9 @@
       android:id="@+id/resultFragment"
       android:name="com.mzkii.dev.fruitsbasket.result.ResultFragment"
       android:label="検索結果">
+    <action
+        android:id="@+id/action_resultFragment_to_detailFragment"
+        app:destination="@id/detailFragment"/>
   </fragment>
   <fragment
       android:id="@+id/detailFragment"
