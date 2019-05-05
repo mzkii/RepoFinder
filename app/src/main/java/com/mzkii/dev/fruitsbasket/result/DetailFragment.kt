@@ -1,4 +1,4 @@
-package com.mzkii.dev.fruitsbasket.pages
+package com.mzkii.dev.fruitsbasket.result
 
 import android.os.Bundle
 import android.view.LayoutInflater

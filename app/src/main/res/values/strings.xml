@@ -1,6 +1,4 @@
 <resources>
   <string name="app_name">fruitsbasket</string>
-
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="no_github_id_message">id を入力してください</string>
 </resources>
