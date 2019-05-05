@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/inputFragment">
+
+  <fragment
+      android:id="@+id/inputFragment"
+      android:name="com.mzkii.dev.fruitsbasket.pages.InputFragment"
+      android:label="リポジトリ検索">
+    <action
+        android:id="@+id/action_inputFragment_to_resultFragment"
+        app:destination="@id/resultFragment"/>
+  </fragment>
+  <fragment
+      android:id="@+id/resultFragment"
+      android:name="com.mzkii.dev.fruitsbasket.pages.ResultFragment"
+      android:label="検索結果">
+    <action
+        android:id="@+id/action_resultFragment_to_detailFragment"
+        app:destination="@id/detailFragment"/>
+    <argument
+        android:name="query"
+        app:argType="string"/>
+  </fragment>
+  <fragment
+      android:id="@+id/detailFragment"
+      android:name="com.mzkii.dev.fruitsbasket.pages.DetailFragment"
+      android:label="リポジトリ詳細">
+    <argument
+        android:name="id"
+        app:argType="long"/>
+  </fragment>
+</navigation>

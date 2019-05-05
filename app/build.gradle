@@ -1,8 +1,10 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+//Apply Safe Args Plugin
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
   compileSdkVersion 28
@@ -47,4 +49,8 @@ dependencies {
 
   // recyclerview
   implementation "androidx.recyclerview:recyclerview:1.1.0-alpha04"
+
+  // navigation
+  implementation "androidx.navigation:navigation-fragment-ktx:2.1.0-alpha02"
+  implementation "androidx.navigation:navigation-ui-ktx:2.1.0-alpha02"
 }
