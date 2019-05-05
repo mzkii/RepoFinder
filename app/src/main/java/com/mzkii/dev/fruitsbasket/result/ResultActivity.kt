@@ -3,7 +3,10 @@ package com.mzkii.dev.fruitsbasket.result
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -53,8 +56,14 @@ class ResultActivity : AppCompatActivity() {
     viewModel = ViewModelProviders.of(this).get(ResultViewModel::class.java)
 
     // リポジトリを取得する．
-    // 取得し終わったら，ResultFragment のリストが自動的に更新される．
+    // 取得し終わったら，ResultFragment にあるリストが自動的に更新される．
     viewModel.fetchRepositoryList(id)
+
+    // 読み込み状態を購読する．
+    viewModel.isLoading.observe(this, Observer { isLoading ->
+      val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+      progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    })
   }
 
   override fun onSupportNavigateUp(): Boolean {
