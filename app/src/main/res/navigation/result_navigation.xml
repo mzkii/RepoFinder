@@ -7,7 +7,7 @@
   <fragment
       android:id="@+id/resultFragment"
       android:name="com.mzkii.dev.fruitsbasket.result.ResultFragment"
-      android:label="検索結果">
+      android:label="resultFragment">
     <action
         android:id="@+id/action_resultFragment_to_detailFragment"
         app:destination="@id/detailFragment"/>
@@ -15,7 +15,7 @@
   <fragment
       android:id="@+id/detailFragment"
       android:name="com.mzkii.dev.fruitsbasket.result.DetailFragment"
-      android:label="リポジトリ詳細">
+      android:label="detailFragment">
     <argument
         android:name="repositoryUrl"
         app:argType="string"/>

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -13,8 +14,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.mzkii.dev.fruitsbasket.R
 
-// 検索結果を表示したり，リポジトリの詳細情報を表示する画面
-// ResultFragment と DetailFragment を保持している Activity
+// 検索結果を表示したり，リポジトリの詳細情報を表示する画面．
+// ResultFragment と DetailFragment を保持している Activity です．
 class ResultActivity : AppCompatActivity() {
 
   // よくある activity を作るパターン
@@ -33,8 +34,8 @@ class ResultActivity : AppCompatActivity() {
     }
   }
 
-  // id を初めて参照したタイミングで，
-  // EXTRA_GITHUB_ID をキーに，事前に putExtra した github id を取得する
+  // id を初めて参照したタイミングで， EXTRA_GITHUB_ID をキーにして，
+  // 事前に putExtra しておいた github id を取得する．
   private val id by lazy {
     intent.getStringExtra(EXTRA_GITHUB_ID)
   }
@@ -55,17 +56,25 @@ class ResultActivity : AppCompatActivity() {
     // viewModel を取得する．
     viewModel = ViewModelProviders.of(this).get(ResultViewModel::class.java)
 
-    // リポジトリを取得する．
-    // 取得し終わったら，ResultFragment にあるリストが自動的に更新される．
+    // リポジトリをネットワーク経由で取得する．
+    // リポジトリの取得が完了したら，ResultFragment にあるリストが自動的に更新される．
     viewModel.fetchRepositoryList(id)
 
     // 読み込み状態を購読する．
+    // 読み込み開始時に isLoading が true になり，終了時に isLoading が false になるので，
+    // 読み込んでいる間だけグルグルを表示するようにしておく．
     viewModel.isLoading.observe(this, Observer { isLoading ->
       val progressBar = findViewById<ProgressBar>(R.id.progressBar)
       progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     })
+
+    // エラーメッセージを購読する．何か文字が来たら Toast で表示しておく．
+    viewModel.toast.observe(this, Observer {
+      Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+    })
   }
 
+  // Navigation のバックボタンなどの制御
   override fun onSupportNavigateUp(): Boolean {
     return findNavController(R.id.main_nav_host).navigateUp()
   }

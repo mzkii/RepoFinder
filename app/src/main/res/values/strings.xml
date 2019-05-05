@@ -1,5 +1,0 @@
-<resources>
-  <string name="app_name">fruitsbasket</string>
-  <string name="no_github_id_message">id を入力してください</string>
-  <string name="faild_fetch_repository_error_message">リポジトリの取得に失敗しました</string>
-</resources>

@@ -23,7 +23,7 @@ class SearchActivity : AppCompatActivity() {
     button.setOnClickListener {
       val inputText = editText.text.toString()
       if (inputText.isEmpty()) {
-        Toast.makeText(this, R.string.no_github_id_message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "id を入力してください", Toast.LENGTH_SHORT).show()
         return@setOnClickListener
       }
 
