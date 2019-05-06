@@ -23,17 +23,18 @@ class DetailFragment : Fragment() {
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    val view = inflater.inflate(R.layout.fragment_detail, container, false)
+    return inflater.inflate(R.layout.fragment_detail, container, false)
+  }
 
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    initView(view)
+    Toast.makeText(context, "$repositoryUrl を表示しています", Toast.LENGTH_LONG).show()
+  }
+
+  private fun initView(view: View) {
     // webView で github のリポジトリを表示する．
     val webView = view.findViewById<WebView>(R.id.webView)
     webView.loadUrl(repositoryUrl)
     webView.webViewClient = WebViewClient()
-
-    return view
-  }
-
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    Toast.makeText(context, "$repositoryUrl を表示しています", Toast.LENGTH_LONG).show()
   }
 }

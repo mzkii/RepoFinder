@@ -24,8 +24,7 @@ class RepositoryAdapter(
 
   override fun onCreateViewHolder(
     parent: ViewGroup, viewType: Int
-  )
-    : RecyclerViewHolder {
+  ) : RecyclerViewHolder {
     val layoutInflater = LayoutInflater.from(parent.context)
     val view = layoutInflater.inflate(R.layout.item_repository, parent, false)
     return RecyclerViewHolder(view)

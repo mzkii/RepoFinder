@@ -36,17 +36,23 @@ class ResultFragment : Fragment() {
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    val view = inflater.inflate(R.layout.fragment_result, container, false)
+    return inflater.inflate(R.layout.fragment_result, container, false)
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    initView(view)
+    observeState()
+  }
+
+  private fun initView(view: View) {
     val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
     val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
     recyclerView.addItemDecoration(itemDecoration)  // リストのアイテム一つずつに上下の仕切り線を追加
     recyclerView.layoutManager = LinearLayoutManager(context) // 縦にリストを並べる
     recyclerView.adapter = adapter  // Adapter を設定
-    return view
   }
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+  private fun observeState() {
     // viewModel を取得する．
     val activity = requireActivity()
     viewModel = ViewModelProviders.of(activity).get(ResultViewModel::class.java)

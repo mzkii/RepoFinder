@@ -46,13 +46,19 @@ class ResultActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_result)
+    initView()
+    observeState()
+  }
 
+  private fun initView() {
     // navigation の設定を諸々しておく．
     // 参考記事: https://qiita.com/jimmysharp/items/06f3157152fbc4cd5113
     val navController = findNavController(R.id.main_nav_host)
     val appBarConfiguration = AppBarConfiguration(navController.graph)
     setupActionBarWithNavController(navController, appBarConfiguration)
+  }
 
+  private fun observeState() {
     // viewModel を取得する．
     viewModel = ViewModelProviders.of(this).get(ResultViewModel::class.java)
 
